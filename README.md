@@ -1,6 +1,6 @@
 # Missense Variant Analysis
 
-## GRPM Nutrigenomics Interaction Dataset
+## GRPM Nutrigenetic Interaction Dataset
 
 - **Zenodo Download Link:** [Click Here to Download](https://zenodo.org/records/14052302/files/nutrigenetic_dataset.zip?download=1)
 
@@ -8,7 +8,7 @@
 
 - **R Code for Analysis:** :: `GrpmMissenseAnalysis.R`
 - **Topics Correspondence Table:** :: `topics_df.csv`
-- **GRPM Nutrigenomics Variant Annotations:** ::`VarAnnotations_GRPMNutrigenInt_AllTopics.parquet`
+- **GRPM Nutrigenetic Variant Annotations:** ::`VarAnnotations_GRPMNutrigenInt_AllTopics.parquet`
 - **List of Missense Variants:** :: `nutrigenint_refsnp_missense.txt`
 - **ProtVar Dataset Annotations:** :: `ProtVar_GRPMNutrigInt_MissenseAnnotations.parquet`
 
