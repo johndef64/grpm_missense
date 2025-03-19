@@ -5,3 +5,5 @@ temp/
 ./temp/nutrigenetic_dataset/grpm_nutrigen_int_gwas.parquet
 ./temp/nutrigenetic_dataset/grpm_nutrigen_int.parquet
 ./temp/nutrigenetic_dataset/grpm_nutrigen.parquet
+other/
+
