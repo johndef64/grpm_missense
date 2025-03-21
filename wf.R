@@ -1,5 +1,29 @@
 library(arrow)
 library(tidyverse)
+library(httr)
+library(jsonlite)
+
+query_api <- function(sym) {
+  query <- list(query = sprintf('query { target(q:{sym:"%s"}) { fam sym } }', sym))
+  
+  res <- POST(
+    url = "https://pharos-api.ncats.io/graphql",
+    body = query,
+    encode = "json"
+  )
+  
+  data <- content(res, as = "parsed", simplifyVector = TRUE)$data$target
+  
+  if (is.null(data)) {
+    return(tibble(sym = sym, family = NA_character_))
+  }
+  
+  tibble(
+    sym = data$sym,
+    family = data$fam
+  )
+}
+
 
 imp <- function(x) {
   x %>% 
@@ -37,6 +61,15 @@ imp4 <- function(x) {
    mutate(score=as.numeric(score), class=gsub(")$","",class))  
 }
 
+imp5 <- function(x) {
+  x %>%
+     select(Gene) %>%
+     distinct %>%
+     mutate(api_response = map(Gene, query_api)) %>%
+     unnest(api_response)
+}
+
+
 GrpmNutrigenInt <- read_parquet("temp/nutrigenetic_dataset/grpm_nutrigen_int.parquet")
 protvar_file_name <- "ProtVar_GrpmNutrigInt_MissenseAnnotations"
 protvar_data <- read_parquet(paste0(protvar_file_name, ".parquet"))
@@ -63,13 +96,16 @@ dud3 <- did %>% #remember to use the RDS
 dud4 <- did %>% #remember to use the RDS
  mutate(am = map(dfs,imp4))
 
+dud5 <- did %>% #remember to use the RDS
+ mutate(fam = map(dfs,imp5))
+
 did %>%
- mutate(snp_count = map_int(value,nrow),
-        missense_count = map_int(dfs,nrow),
-        miss_gene_count = map_int(dfs, function(x) n_distinct(x$Gene)),
-        missense_snp_ratio= round(missense_count/snp_count,2)) %>%
- select(-value,-dfs) %>%
-  write.table(pipe("xsel -b"), row.names = F, quote = F, sep = ";")
+   mutate(snp_count = map_int(value,nrow),
+          missense_count = map_int(dfs,nrow),
+          miss_gene_count = map_int(dfs, function(x) n_distinct(x$Gene)),
+          missense_snp_ratio= round(missense_count/snp_count,2)) %>%
+   select(-value,-dfs) %>%
+   write.table(pipe("xsel -b"), row.names = F, quote = F, sep = ";")
 
 dud %>%
   select(name,asd) %>%
@@ -98,6 +134,14 @@ am_plot <- dud4 %>%
   scale_x_reverse() +
   scale_fill_manual(values = c("BENIGN" = "dodgerblue", "AMBIGUOUS" = "orange",
                                "PATHOGENIC" = "firebrick"))
+
+fam_plot <- dud5 %>%
+  select(name, am) %>%
+  unnest(am) %>%
+  mutate(across(family, ~replace_na(.x, "Other")),
+         family = fct_relevel(family, "Other"))  %>%
+  ggplot(aes(y=name,fill=family)) +
+  geom_bar(position="fill")
 
 binary_matrix <- dud3 %>%
   select(name,fix) %>%
