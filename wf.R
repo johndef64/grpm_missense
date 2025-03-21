@@ -1,3 +1,6 @@
+library(arrow)
+library(tidyverse)
+
 imp <- function(x) {
   x %>% 
     separate(`Residue_function_(evidence)`,
@@ -26,6 +29,14 @@ separate(dav, into =c("one","dum"),
          distinct
 }
 
+imp4 <- function(x) {
+  x %>%
+   select(am=`AlphaMissense_pathogenicity(class)`) %>%
+   filter(am != "N/A") %>%
+   separate(am, into = c("score","class"),sep ="\\(") %>%
+   mutate(score=as.numeric(score), class=gsub(")$","",class))  
+}
+
 GrpmNutrigenInt <- read_parquet("temp/nutrigenetic_dataset/grpm_nutrigen_int.parquet")
 protvar_file_name <- "ProtVar_GrpmNutrigInt_MissenseAnnotations"
 protvar_data <- read_parquet(paste0(protvar_file_name, ".parquet"))
@@ -48,6 +59,9 @@ dud2 <- did %>% #remember to use the RDS
 
 dud3 <- did %>% #remember to use the RDS
  mutate(fix = map(dfs,imp3))
+
+dud4 <- did %>% #remember to use the RDS
+ mutate(am = map(dfs,imp4))
 
 did %>%
  mutate(snp_count = map_int(value,nrow),
@@ -75,9 +89,15 @@ fx_plot <- ggplot(fx_bins, aes(y = name, x = n, fill = bin)) +
   geom_col(position = "fill") +
   scale_x_reverse()
 
-asda <- dud3 %>%
-  select(name,fix) %>%
-  unnest(fix)
+am_plot <- dud4 %>%
+  select(name,am) %>%
+  unnest(am) %>%
+  mutate(class = fct_relevel(class, "BENIGN")) %>%
+  ggplot(aes(y=name,fill=class)) +
+         geom_bar(position="fill") +
+  scale_x_reverse() +
+  scale_fill_manual(values = c("BENIGN" = "dodgerblue", "AMBIGUOUS" = "orange",
+                               "PATHOGENIC" = "firebrick"))
 
 binary_matrix <- dud3 %>%
   select(name,fix) %>%
@@ -87,10 +107,9 @@ binary_matrix <- dud3 %>%
               values_fill = 0) %>%
   column_to_rownames("one")
 
-library(ComplexUpset)
-upset(binary_matrix, intersect = colnames(binary_matrix),
+ComplexUpset::upset(binary_matrix, intersect = colnames(binary_matrix),
     base_annotations=list(
-        'Intersection size'=intersection_size(
+        'Intersection size' = ComplexUpset::intersection_size(
             text=list(
                 vjust=0.45,
                 hjust=-0.1,
