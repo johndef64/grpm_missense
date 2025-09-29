@@ -1,14 +1,14 @@
 Project: Nutrigenomics Protein Variant Analysis
 Title: Analysis of Protein Variants in Nutrigenomics Contexts
 Version: 1.0.0
-Author: [Bruno Hay Mele; Giovanni M. De Filippis]
-Maintainer: [Giovanni M. De Filippis] <giovannimaria.defilippis@unina.it>
+Author: Bruno Hay Mele; Giovanni M. De Filippis
+Maintainer: Giovanni M. De Filippis <giovannimaria.defilippis@unina.it>
 Description: This project provides tools for analyzing protein variants in nutrigenomics
     contexts, including variant annotation, functional family classification, and 
     pathogenicity prediction. The analysis integrates data from multiple sources
     including GRPM nutrigenomics datasets, ProtVar annotations, and Pharos functional
     classifications.
-License: [MIT]
+License: MIT
 Encoding: UTF-8
 
 Required R Version: >= 4.0.0
