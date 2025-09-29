@@ -7,36 +7,36 @@ This project analyzes protein variants in nutrigenomics contexts, focusing on mi
 ## Project Structure
 
 ```
-├── README.md                    # This file
-├── DESCRIPTION                  # Project metadata
-├── quick_run.R                  # Complete analysis pipeline
+├── README.md                      # This file
+├── DESCRIPTION                    # Project metadata
+├── NAMESPACE                      # R package namespace
+├── LICENSE                        # Project license
+├── quick_run.R                    # Complete analysis pipeline
+├── run_analysis.R                 # Alternative analysis runner
+├── setup.R                        # Setup script
 ├── config/
-│   └── config.yaml             # Configuration parameters
+│   └── config.yaml                # Configuration parameters
 ├── data/
-│   └── raw/                    # Raw data files
-│   └── processed/              # Processed data files
-│   └── external/               # External reference data
-├── src/                        # Source code
-│   ├── data_acquisition.R      # Data download and preparation
-│   ├── data_processing.R       # Data cleaning and processing
-│   ├── analysis.R              # Main analysis functions
-│   └── visualization.R         # Plotting functions
-├── R/                          # Package functions
-│   ├── api_functions.R         # API query functions
-│   ├── data_functions.R        # Data manipulation functions
-│   └── plot_functions.R        # Visualization functions
-├── scripts/                    # Analysis scripts
-│   ├── 01_setup.R              # Environment setup
-│   ├── 02_data_prep.R          # Data preparation
-│   ├── 03_analysis.R           # Main analysis
-│   └── 04_figures.R            # Figure generation
+│   ├── ProtVar_GrpmNutrigInt_...  # Main dataset
+│   ├── raw/                       # Raw data files
+│   ├── processed/                 # Processed data files
+│   └── external/                  # External reference data
+├── R/                             # Package functions
+│   ├── api_functions.R            # API query functions
+│   ├── data_functions.R           # Data manipulation functions
+│   └── plot_functions.R           # Visualization functions
+├── scripts/                       # Analysis scripts
+│   ├── 01_setup.R                 # Environment setup
+│   ├── 02_data_prep.R             # Data preparation
+│   ├── 03_analysis.R              # Main analysis
+│   └── 04_figures.R               # Figure generation
 ├── output/
-│   ├── figures/                # Generated figures
-│   ├── tables/                 # Generated tables
-│   └── reports/                # Analysis reports
-├── tests/                      # Unit tests
-├── docs/                       # Documentation
-└── original_code/              # Preserved original code
+│   ├── figures/                   # Generated figures
+│   ├── tables/                    # Generated tables
+│   └── reports/                   # Analysis reports
+├── tests/
+│   └── test_functions.R           # Unit tests
+└── docs/                          # Documentation
 ```
 
 ## Requirements
@@ -51,7 +51,7 @@ This project analyzes protein variants in nutrigenomics contexts, focusing on mi
 3. Run the analysis - packages will be installed automatically:
 
 ```r
-source("quick_run.R")
+source("setup.R")
 ```
 
 ## Usage
@@ -59,7 +59,7 @@ source("quick_run.R")
 ### Complete Analysis
 
 ```r
-source("quick_run.R")
+source("run_analysis.R")
 ```
 
 ### Step-by-Step Analysis
@@ -73,9 +73,9 @@ source("scripts/04_figures.R")     # Generate figures and tables
 
 ## Data Sources
 
-- **GRPM Nutrigenomics Dataset**: Available from Zenodo (DOI: 10.5281/zenodo.14052302)
-- **Variant Annotations**: ProtVar (https://www.ebi.ac.uk/ProtVar/)
-- **Functional Families**: Pharos API (https://pharos-api.ncats.io/)
+- **GRPM Nutrigenomics Dataset**: Available from Zenodo ([DOI: 10.5281/zenodo.14052302](https://doi.org/10.5281/zenodo.14052302))
+- **Variant Annotations**: ProtVar ([https://www.ebi.ac.uk/ProtVar/](https://www.ebi.ac.uk/ProtVar/))
+- **Functional Families**: Pharos API ([https://pharos-api.ncats.io/](https://pharos-api.ncats.io/))
 
 ## Outputs
 
@@ -96,12 +96,16 @@ Please ensure all code follows the established structure and includes appropriat
 
 ## License
 
-[Specify license here]
+MIT License. See the LICENSE file for details.
 
+<!-- 
 ## Citation
 
-[Add citation information here]
+[Add citation information here] 
+-->
 
 ## Contact
 
-[Add contact information here]
+For any inquiries, please contact:
+- Giovanni M. De Filippis - [giovannimaria.defilippis@unina.it](mailto:giovannimaria.defilippis@unina.it)
+- Bruno Hay Mele - [bruno.haymele@unina.it](mailto:bruno.haymele@unina.it)
