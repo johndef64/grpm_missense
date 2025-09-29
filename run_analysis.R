@@ -101,5 +101,4 @@ print(outputs_summary, row.names = FALSE)
 
 cat("\n=====================================\n")
 cat("Analysis completed successfully!\n")
-cat("All outputs are ready for manuscript preparation.\n")
 cat("=====================================\n")
