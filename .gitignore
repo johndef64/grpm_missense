@@ -1,5 +1,6 @@
 nutrigenetic_dataset.zip
 temp/
+previous_versions/
 ./temp/
 ./temp/nutrigenetic_dataset
 ./temp/nutrigenetic_dataset/grpm_nutrigen_int_gwas.parquet

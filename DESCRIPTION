@@ -1,0 +1,40 @@
+Project: Nutrigenomics Protein Variant Analysis
+Title: Analysis of Protein Variants in Nutrigenomics Contexts
+Version: 1.0.0
+Author: [Bruno Hay Mele; Giovanni M. De Filippis]
+Maintainer: [Giovanni M. De Filippis] <giovannimaria.defilippis@unina.it>
+Description: This project provides tools for analyzing protein variants in nutrigenomics
+    contexts, including variant annotation, functional family classification, and 
+    pathogenicity prediction. The analysis integrates data from multiple sources
+    including GRPM nutrigenomics datasets, ProtVar annotations, and Pharos functional
+    classifications.
+License: [MIT]
+Encoding: UTF-8
+
+Required R Version: >= 4.0.0
+
+Required Packages:
+    - arrow (>= 12.0.0)
+    - biomaRt (>= 2.50.0)  
+    - httr (>= 1.4.0)
+    - jsonlite (>= 1.8.0)
+    - tidyverse (>= 1.3.0)
+    - dplyr (>= 1.1.0)
+    - ggplot2 (>= 3.4.0)
+    - patchwork (>= 1.1.0)
+    - yaml (>= 2.3.0)
+    - here (>= 1.0.0)
+    - readr (>= 2.1.0)
+    - stringr (>= 1.5.0)
+    - tidyr (>= 1.3.0)
+    - purrr (>= 1.0.0)
+    - forcats (>= 1.0.0)
+    - magrittr
+
+Optional Packages:
+    - testthat (>= 3.0.0)
+    - knitr
+    - rmarkdown
+
+Installation: Run source("setup.R") to install all required packages
+Quick Start: Run source("quick_run.R") to execute the complete analysis pipeline

@@ -1,0 +1,28 @@
+# ================================================================================
+# PROJECT FUNCTIONS REFERENCE
+# ================================================================================
+# This file lists the main functions available in this project's R/ directory.
+# These functions are loaded automatically when sourcing scripts/01_setup.R
+
+# API Functions (R/api_functions.R):
+# - query_pharos_api()         : Query the Pharos API for gene information
+# - get_variant_annotations()  : Get variant annotations from multiple sources  
+# - batch_query_pharos()       : Batch processing for Pharos API queries
+
+# Data Functions (R/data_functions.R):
+# - extract_residue_functions()     : Extract residue function information
+# - extract_foldx_predictions()     : Extract FoldX prediction data
+# - extract_disease_associations()  : Extract disease association data
+# - extract_alphamissense_scores()  : Extract AlphaMissense scores
+# - filter_by_rsids()              : Filter data by RS IDs
+# - create_summary_table()         : Create summary statistics table
+
+# Plot Functions (R/plot_functions.R):
+# - create_foldx_plot()        : Create FoldX prediction plots
+# - create_alphamissense_plot(): Create AlphaMissense plots  
+# - create_family_plot()       : Create protein family plots
+# - save_plot()                : Save plots with standard formatting
+# - create_combined_plot()     : Create multi-panel combined plots
+
+# Note: All functions use the tidyverse pipe operator (%>%) which is loaded
+# automatically through the tidyverse package.

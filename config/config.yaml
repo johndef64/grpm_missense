@@ -1,0 +1,44 @@
+# Configuration file for Nutrigenomics Protein Analysis
+
+# Data sources
+data:
+  zenodo_url: "https://zenodo.org/records/14052302/files/nutrigenetic_dataset.zip?download=1"
+  zenodo_filename: "nutrigenetic_dataset.zip"
+  grpm_file: "grpm_nutrigen_int.parquet"
+  protvar_base_name: "ProtVar_GrpmNutrigInt_MissenseAnnotations"
+  missense_rsids_file: "nutrigenint_refsnp_missense.txt"
+
+# API endpoints
+apis:
+  pharos_graphql: "https://pharos-api.ncats.io/graphql"
+  biomart_dataset: "hsapiens_snp"
+  protvar_url: "https://www.ebi.ac.uk/ProtVar/"
+
+# Analysis parameters
+analysis:
+  consequence_filter: "missense_variant"
+  foldx_bins: [-Inf, -4, -2, 0, 2, 4, Inf]
+  alphamissense_colors:
+    BENIGN: "dodgerblue"
+    AMBIGUOUS: "orange" 
+    PATHOGENIC: "firebrick"
+
+# Output settings
+output:
+  figure_width: 14
+  figure_height: 6
+  figure_scale: 2
+  figure_dpi: 300
+  figure_units: "cm"
+  table_separator: ","
+
+# Paths (relative to project root)
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed" 
+  data_external: "data/external"
+  output_figures: "output/figures"
+  output_tables: "output/tables"
+  output_reports: "output/reports"
+  original_code: "original_code"
+  temp_data: "temp"
