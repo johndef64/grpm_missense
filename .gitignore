@@ -1,3 +1,6 @@
+.gitignore
+.gitattributes
+
 nutrigenetic_dataset.zip
 temp/
 previous_versions/

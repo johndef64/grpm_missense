@@ -10,12 +10,11 @@ This project analyzes protein variants in nutrigenomics contexts, focusing on mi
 ## Project Structure
 
 ```
-├── README.md                      # This file
 ├── DESCRIPTION                    # Project metadata
 ├── NAMESPACE                      # R package namespace
 ├── LICENSE                        # Project license
-├── quick_run.R                    # Complete analysis pipeline
-├── run_analysis.R                 # Alternative analysis runner
+├── quick_run.R                    # Quick analysis runner
+├── run_analysis.R                 # Complete analysis pipeline
 ├── setup.R                        # Setup script
 ├── config/
 │   └── config.yaml                # Configuration parameters
