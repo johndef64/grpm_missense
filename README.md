@@ -1,6 +1,6 @@
 # Nutrigenomics Protein Variant Analysis
 
-[![R](https://img.shields.io/badge/R-4.0.0-blue.svg)](https://www.r-project.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT) [![Data Source](https://img.shields.io/badge/Data%20Source-Zenodo-blue.svg)](https://doi.org/10.5281/zenodo.14052302) [![DOI](https://zenodo.org/badge/DOI/10.3390/ijms26199619)](https://doi.org/10.3390/ijms26199619)
+[![R](https://img.shields.io/badge/R-4.0.0-blue.svg)](https://www.r-project.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT) [![Data Source](https://img.shields.io/badge/Data%20Source-Zenodo-blue.svg)](https://doi.org/10.5281/zenodo.14052302) [![DOI](https://img.shields.io/badge/MDPI-10.3390%2Fijms26199619-green?style=flat&logo=mdpi)](https://doi.org/10.3390/ijms26199619)
 
 
 ## Overview
